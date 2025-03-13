@@ -19,6 +19,6 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Notes
         fields = ['id', 'title', 'content', 'created_at', 'author'] # these are the fields that we want to serialize when we are accepting and returning a new note
         extra_kwargs = {'author': {'read_only': True}}
-    def create(self, validated_data):
-        note = Notes.objects.create(author=self.context['request'].user, **validated_data)
-        return note
+    # def create(self, validated_data):
+    #     note = Notes.objects.create(author=self.context['request'].user, **validated_data)
+    #     return note
