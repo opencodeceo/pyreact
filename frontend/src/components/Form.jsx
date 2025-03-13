@@ -17,14 +17,19 @@ function Form({ route, method }) {
     try {
       const res = await api.post(route, { username, password });
       if (method === "login") {
-        localStorage.setItem(ACCESS_TOKEN, res.data.access_token);
-        localStorage.setItem(REFRESH_TOKEN, res.data.refresh_token);
+        localStorage.setItem(ACCESS_TOKEN, res.data.access);
+        localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
         navigate("/");
       } else {
         navigate("/login");
       }
     } catch (error) {
-      alert(error);
+      if (error.response) {
+        console.error("Error data:", error.response.data);
+        alert(`Error: ${JSON.stringify(error.response.data)}`);
+      } else {
+        alert(`Error: ${error.message}`);
+      }
     } finally {
       setLoading(false);
     }

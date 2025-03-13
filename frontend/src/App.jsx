@@ -35,7 +35,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={logout()} />
-        <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
